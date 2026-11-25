@@ -15,11 +15,13 @@ const variant = instance.getEnum('Type', {
   Brand: 'brand',
 })
 
+// Adds a prop on its own line only when it is present, so no empty lines are left in the snippet.
+const line = (show: boolean, text: string) => (show ? `\n  ${text}` : '')
+
 export default {
   example: figma.code`<Tag
   variant="${variant}"
-  label="${label}"
-  ${showIcon ? '' : 'showIcon={false}'}
+  label="${label}"${line(!showIcon, 'showIcon={false}')}
 />`,
   imports: ['import { Tag } from "src/components/Tag"'],
   id: 'tag',

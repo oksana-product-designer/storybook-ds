@@ -33,20 +33,27 @@ const state = instance.getEnum('State', {
 // In Default, Hover and Focus the Figma "Value" is the empty-field text. In the other states it is the content.
 const isEmptyState = state === 'default' || state === 'hover' || state === 'focus'
 
-const props = figma.code`variant="${variant}"
-  label="${label}"
-  ${required ? '' : 'required={false}'}
-  ${infoIcon ? 'infoIcon' : ''}
-  ${showHelperText ? figma.code`showHelperText helperText="${helperText}"` : ''}
-  ${state === 'error' ? figma.code`state="error" errorMessage="${errorMessage}"` : ''}
-  ${state === 'success' ? figma.code`state="success" successMessage="${successMessage}"` : ''}
-  ${state === 'disabled' ? 'disabled' : ''}`
+// Adds a prop on its own line only when it is present, so no empty lines are left in the snippet.
+const line = (show: boolean, text: string) => (show ? `\n  ${text}` : '')
 
-const text =
+// All props are plain strings, so they can be joined without leaving empty lines.
+const props =
+  `variant="${variant}"` +
+  line(true, `label="${label}"`) +
+  line(!required, 'required={false}') +
+  line(infoIcon, 'infoIcon') +
+  line(showHelperText, `showHelperText helperText="${helperText}"`) +
+  line(state === 'error', `state="error" errorMessage="${errorMessage}"`) +
+  line(state === 'success', `state="success" successMessage="${successMessage}"`) +
+  line(state === 'disabled', 'disabled')
+
+// In Default, Hover and Focus the Figma "Value" is the empty-field text. In the other states it is the content.
+const placeholder = line(isEmptyState, `placeholder="${value}"`)
+const textProp =
   variant === 'text' || variant === 'date'
     ? isEmptyState
-      ? figma.code`placeholder="${value}"`
-      : figma.code`defaultValue="${value}"`
+      ? placeholder
+      : line(true, `defaultValue="${value}"`)
     : ''
 
 // The "Chips" slot holds the selected chips of the multi-select.
@@ -59,17 +66,15 @@ if (variant === 'select') {
 >
   <option value="">${value}</option>
 </Input>`
-} else if (variant === 'multi-select') {
+} else if (variant === 'multi-select' && chips) {
   example = figma.code`<Input
-  ${props}
-  ${isEmptyState ? figma.code`placeholder="${value}"` : ''}
+  ${props}${placeholder}
 >
   ${chips}
 </Input>`
 } else {
   example = figma.code`<Input
-  ${props}
-  ${text}
+  ${props}${variant === 'multi-select' ? placeholder : textProp}
 />`
 }
 

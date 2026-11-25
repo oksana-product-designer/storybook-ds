@@ -19,8 +19,7 @@ instance.findConnectedInstances((node) => node.codeConnectId() === 'button-group
 // aria-label is a placeholder: the group needs an accessible name in code.
 export default {
   example: figma.code`<ButtonGroup
-  aria-label="Options"
-  ${selectedValue !== undefined ? figma.code`defaultValue="${selectedValue}"` : ''}
+  aria-label="Options"${selectedValue !== undefined ? `\n  defaultValue="${selectedValue}"` : ''}
 >
   ${options}
 </ButtonGroup>`,

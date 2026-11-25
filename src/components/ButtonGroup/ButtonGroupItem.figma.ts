@@ -43,20 +43,19 @@ if (content === 'logo') {
   }
 }
 
+// Adds a prop on its own line only when it is present, so no empty lines are left in the snippet.
+const line = (show: boolean, text: string) => (show ? `\n  ${text}` : '')
+
+const leadingBreak = leadingIconCode ? '\n  ' : ''
+const trailingBreak = trailingIconCode ? '\n  ' : ''
+const logoBreak = logoCode ? '\n  ' : ''
+
 // Inside a ButtonGroup the group owns the selection, so "selected" is not written on the item.
 // The parent ButtonGroup template reads it from the metadata and writes defaultValue.
 // "value" is not a Figma property: the label is used so that each item has an id.
 export default {
   example: figma.code`<ButtonGroupItem
-  value="${label}"
-  ${content === 'logo' ? 'content="logo"' : ''}
-  ${content === 'text' ? figma.code`label="${label}"` : ''}
-  ${showLeadingIcon && content === 'text' ? 'showLeadingIcon' : ''}
-  ${leadingIconCode ? figma.code`leadingIcon={${leadingIconCode}}` : ''}
-  ${showTrailingIcon && content === 'text' ? 'showTrailingIcon' : ''}
-  ${trailingIconCode ? figma.code`trailingIcon={${trailingIconCode}}` : ''}
-  ${logoCode ? figma.code`logo={${logoCode}}` : ''}
-  ${state === 'disabled' ? 'disabled' : ''}
+  value="${label}"${line(content === 'logo', 'content="logo"')}${line(content === 'text', `label="${label}"`)}${line(showLeadingIcon && content === 'text', 'showLeadingIcon')}${leadingBreak}${leadingIconCode ? figma.code`leadingIcon={${leadingIconCode}}` : ''}${line(showTrailingIcon && content === 'text', 'showTrailingIcon')}${trailingBreak}${trailingIconCode ? figma.code`trailingIcon={${trailingIconCode}}` : ''}${logoBreak}${logoCode ? figma.code`logo={${logoCode}}` : ''}${line(state === 'disabled', 'disabled')}
 />`,
   imports: ['import { ButtonGroupItem } from "src/components/ButtonGroup"'],
   id: 'button-group-item',

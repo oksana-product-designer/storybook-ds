@@ -25,19 +25,12 @@ const state = instance.getEnum('State', {
   Error: 'error',
 })
 
+// Adds a prop on its own line only when it is present, so no empty lines are left in the snippet.
+const line = (show: boolean, text: string) => (show ? `\n  ${text}` : '')
+
 export default {
   example: figma.code`<Checkbox
-  label="${label}"
-  ${showLabel ? '' : 'showLabel={false}'}
-  ${checked ? 'defaultChecked' : ''}
-  ${description ? 'description' : ''}
-  ${description ? figma.code`descriptionText="${descriptionText}"` : ''}
-  ${state === 'error' ? 'state="error"' : ''}
-  ${state === 'error' ? figma.code`errorMessage="${errorMessage}"` : ''}
-  ${state === 'disabled' ? 'disabled' : ''}
-  ${showTitle ? figma.code`showTitle title="${title}"` : ''}
-  ${showTitle && titleRequired ? 'titleRequired' : ''}
-  ${showTitle && titleInfoIcon ? 'titleInfoIcon' : ''}
+  label="${label}"${line(!showLabel, 'showLabel={false}')}${line(!!checked, 'defaultChecked')}${line(!!description, 'description')}${line(!!description, `descriptionText="${descriptionText}"`)}${line(state === 'error', 'state="error"')}${line(state === 'error', `errorMessage="${errorMessage}"`)}${line(state === 'disabled', 'disabled')}${line(showTitle, `showTitle title="${title}"`)}${line(showTitle && titleRequired, 'titleRequired')}${line(showTitle && titleInfoIcon, 'titleInfoIcon')}
 />`,
   imports: ['import { Checkbox } from "src/components/Checkbox"'],
   id: 'checkbox',

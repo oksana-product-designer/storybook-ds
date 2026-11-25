@@ -46,16 +46,17 @@ if (showTrailingIcon) {
   }
 }
 
+// Adds a prop on its own line only when it is present, so no empty lines are left in the snippet.
+const line = (show: boolean, text: string) => (show ? `\n  ${text}` : '')
+
+// A section (the icon snippet) needs its own line break, added only when the section exists.
+const leadingBreak = leadingIconCode ? '\n  ' : ''
+const trailingBreak = trailingIconCode ? '\n  ' : ''
+
 export default {
   example: figma.code`<Button
-  variant="${variant}"
-  ${size === 'small' ? 'size="small"' : ''}
-  label="${label}"
-  ${showLeadingIcon ? 'showLeadingIcon' : ''}
-  ${leadingIconCode ? figma.code`leadingIcon={${leadingIconCode}}` : ''}
-  ${showTrailingIcon ? 'showTrailingIcon' : ''}
-  ${trailingIconCode ? figma.code`trailingIcon={${trailingIconCode}}` : ''}
-  ${state === 'disabled' ? 'disabled' : ''}
+  variant="${variant}"${line(size === 'small', 'size="small"')}
+  label="${label}"${line(showLeadingIcon, 'showLeadingIcon')}${leadingBreak}${leadingIconCode ? figma.code`leadingIcon={${leadingIconCode}}` : ''}${line(showTrailingIcon, 'showTrailingIcon')}${trailingBreak}${trailingIconCode ? figma.code`trailingIcon={${trailingIconCode}}` : ''}${line(state === 'disabled', 'disabled')}
 />`,
   imports: ['import { Button } from "src/components/Button"'],
   id: 'button',
