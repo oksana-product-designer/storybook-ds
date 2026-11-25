@@ -56,9 +56,8 @@ const textProp =
       : line(true, `defaultValue="${value}"`)
     : ''
 
-// The "Chips" slot holds the selected chips of the multi-select. Chip has no Code Connect, so an empty or
-// unconnected slot is left out instead of printing a "missing snippet" comment.
-const chips = instance.getSlot('Chips')
+// The "Chips" slot is not written: Chip has no code component and no Code Connect template, so the slot
+// only produced a "missing snippet" comment. The multi-select is shown without children.
 
 let example
 if (variant === 'select') {
@@ -66,12 +65,6 @@ if (variant === 'select') {
   ${props}
 >
   <option value="">${value}</option>
-</Input>`
-} else if (variant === 'multi-select' && chips && chips.connectedInstances.length > 0) {
-  example = figma.code`<Input
-  ${props}${placeholder}
->
-  ${chips}
 </Input>`
 } else {
   example = figma.code`<Input
