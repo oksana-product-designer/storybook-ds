@@ -35,6 +35,22 @@ Storybook is published to [Chromatic](https://www.chromatic.com) by the GitHub A
 
 To publish by hand: `CHROMATIC_PROJECT_TOKEN=<token> npm run chromatic`.
 
+## Figma Code Connect
+
+Every component has a Code Connect template next to it (`Button.figma.ts`, `Input.figma.ts`, ...), plus one per icon in
+`src/icons/figma/`. In Figma Dev Mode they show a snippet with the real props instead of generated CSS.
+The templates map Figma properties to props (Figma `Type` is `variant`); hover, pressed and focus are CSS states,
+so only `Disabled` and `Error` become props.
+
+Needs a Figma Organization or Enterprise plan and the components published in the team library.
+
+```bash
+FIGMA_ACCESS_TOKEN=<token> npm run figma:publish
+```
+
+Create the token in Figma (Settings, Security, Personal access tokens) with the scopes *File content: Read*
+and *Code Connect: Write*. `npx figma connect publish --dry-run` lists what would be published without a token call.
+
 ## What is inside
 
 **Foundations** (read from the tokens, never copied): Colors, Typography, Spacing.

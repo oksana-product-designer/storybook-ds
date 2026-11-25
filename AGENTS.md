@@ -58,6 +58,14 @@ Stories are tagged `ai-generated`. Exactly one `CssCheck` story exists (`Button`
 - Icons are decorative: `aria-hidden`. Colour always comes from `currentColor` via a token on the parent.
 - The a11y addon is on. Do not leave violations in new stories.
 
+## Figma Code Connect
+
+- Each component has a `<Name>.figma.ts` template next to it, and each icon has one in `src/icons/figma/`. They are parserless templates (`figma.code`), never `.figma.tsx` or `figma.connect()`.
+- When you add or rename a component, a prop or a prop value, update its template in the same change. A template may only use props that exist in the component.
+- Map every Figma property: `getEnum` must list every Figma value, text and boolean properties use `getString` and `getBoolean`, icon properties use `getInstanceSwap` with `executeTemplate()`. Never hardcode child content.
+- Hover, pressed and focus are CSS states in code, so they are not written as props. Disabled and error are.
+- Publish with `FIGMA_ACCESS_TOKEN=<token> npm run figma:publish`. Check first with `npx figma connect publish --dry-run`. Never write the token into a file.
+
 ## Folder structure
 
 ```
