@@ -161,3 +161,11 @@
   background: var(--surface-page);
   color: var(--icon-primary);
 }
+
+.ds-doc__logo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-24) var(--space-16);
+  border-block-end: var(--border-width-default) solid var(--border-divider);
+}

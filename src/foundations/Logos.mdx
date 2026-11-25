@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { LogoGallery } from '../docs/LogoGallery';
+
+<Meta title="Foundations/Logos" />
+
+# Logos
+
+The logos from the Figma Logos section. PayPal, PayPal Credit, G Pay and TVP are exported from Figma into
+`src/assets/logos`. **Affiliate** is a grey placeholder block in Figma (the partner logo is not designed yet),
+so it is drawn as the same block.
+
+Use the `Logo` component, for example as the `logo` of a Button group item with `content="logo"`:
+
+```tsx
+import { Logo } from 'src/components/Logo';
+
+<ButtonGroupItem value="paypal" content="logo" logo={<Logo name="paypal" />} aria-label="PayPal" />
+```
+
+The accessible name defaults to the brand name; pass `alt=""` when the logo is decorative.
+
+<LogoGallery />

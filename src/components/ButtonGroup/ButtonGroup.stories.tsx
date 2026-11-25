@@ -19,7 +19,7 @@ const meta = {
           '(one choice, arrow keys move and select, one tab stop). With `multiple` every item is an independent **toggle button** (`aria-pressed`). ' +
           'Selection lives on the group (`value`, `defaultValue`, `onChange`); each item has a `value`. ' +
           'The group needs an accessible name: pass `aria-label` or `aria-labelledby`.\n\n' +
-          'Item `content="logo"` shows the `logo` slot: pass a `Logo` (see Components/Logo). A placeholder is drawn when no logo is passed.',
+          'Item `content="logo"` shows the `logo` slot: pass a `Logo` (see Foundations/Logos). A placeholder is drawn when no logo is passed.',
       },
     },
   },

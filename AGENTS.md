@@ -75,7 +75,7 @@ Stories are tagged `ai-generated`. Exactly one `CssCheck` story exists (`Button`
 src/
   tokens/
     tokens.css            # the only place where raw values live
-  foundations/            # MDX pages: Colors, Typography, Spacing (read from tokens.css)
+  foundations/            # MDX pages: Colors, Typography, Spacing (read from tokens.css), Icons, Logos
   docs/                   # helpers for documentation pages and story grids (not part of the library)
     tokens.ts             # parses tokens.css, so pages never duplicate values
     StoryMatrix.tsx       # variant x state grid for stories
@@ -126,4 +126,4 @@ component: the Calendar draws its day states.
 Notes on the parts that are not plain Figma copies:
 - Select, Multi-select and Date in `Input` are built by us: the Figma file only draws the closed field and the open menu or calendar.
 - The Calendar uses `react-day-picker` (week starts on Monday, English labels, as in Figma).
-- Logos are real files in `src/assets/logos`. Figma "Logo / Affiliate" is a grey placeholder block, so `Logo name="affiliate"` is the same block.
+- Icons and logos are shown on Foundations pages (Icons, Logos), not as component stories. Logos are real files in `src/assets/logos`. Figma "Logo / Affiliate" is a grey placeholder block, so `Logo name="affiliate"` is the same block.

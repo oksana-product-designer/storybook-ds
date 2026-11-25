@@ -53,11 +53,11 @@ and *Code Connect: Write*. `npx figma connect publish --dry-run` lists what woul
 
 ## What is inside
 
-**Foundations** (read from the tokens, never copied): Colors, Typography, Spacing.
+**Foundations**: Colors, Typography and Spacing (read from the tokens, never copied), Icons and Logos.
 
 **Components**: Button, ButtonGroup (with ButtonGroupItem), Input (text, select, date, multi-select), Checkbox, Tag, Chip,
-TextLink, Divider, ChevronToggle, Popover (with InfoPopover), SelectMenu (with SelectOption), Calendar and Logo.
-Every component has stories for all Figma variants and states, with autodocs. The icons have their own page (Foundations / Icons).
+TextLink, Divider, ChevronToggle, Popover (with InfoPopover), SelectMenu (with SelectOption), Calendar and Logo (shown on Foundations / Logos).
+Every component has stories for all Figma variants and states, with autodocs. The icons and the logos have their own pages (Foundations / Icons and Foundations / Logos).
 
 | Component | Figma component | Main props |
 |---|---|---|
@@ -87,7 +87,7 @@ the `state` prop only forces a look so Storybook can show every state.
 .storybook/              Storybook config (tokens and fonts are loaded in preview.tsx)
 src/
   tokens/tokens.css      The only place where raw values live
-  foundations/           MDX pages: Colors, Typography, Spacing
+  foundations/           MDX pages: Colors, Typography, Spacing, Icons, Logos
   components/<Name>/     Component, CSS, stories, index.ts
   icons/Icon.tsx         Icons by Figma name
   assets/logos/          Logos exported from Figma
