@@ -150,3 +150,14 @@
   font-size: var(--caption-font-size);
   line-height: var(--caption-line-height);
 }
+
+.ds-doc__icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--space-32);
+  padding-block: var(--space-16);
+  border-block-end: var(--border-width-default) solid var(--border-divider);
+  background: var(--surface-page);
+  color: var(--icon-primary);
+}

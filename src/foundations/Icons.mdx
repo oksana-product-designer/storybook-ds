@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { IconGallery } from '../docs/IconGallery';
+
+<Meta title="Foundations/Icons" />
+
+# Icons
+
+The icons used by the components, named as in the Figma icon library (`lucide/...` and `icon/...`).
+Colour is `currentColor`, so it always comes from a token on the parent. The `award` icon is the only
+multi-colour one: its gradient is built from the `--surface-badge` and `--accent-primary` tokens.
+
+```tsx
+import { Icon } from 'src/icons/Icon';
+
+<Icon name="arrow-right" />
+<Icon name="money-back" size="var(--icon-size-lg)" />
+```
+
+<IconGallery />

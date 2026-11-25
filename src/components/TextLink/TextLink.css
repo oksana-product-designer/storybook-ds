@@ -1,0 +1,34 @@
+/* Text link — Figma component "Text link" (State). Tokens only. */
+
+.ds-text-link {
+  display: inline-block;
+  border-radius: var(--radius-sm);
+  color: var(--text-link);
+  font-family: var(--font-family);
+  font-size: var(--body-link-font-size);
+  line-height: var(--body-link-line-height);
+  font-weight: var(--body-link-font-weight);
+  letter-spacing: var(--body-link-letter-spacing);
+  text-decoration: underline;
+  text-underline-position: from-font;
+  cursor: pointer;
+  outline: none;
+}
+
+.ds-text-link:hover:not([aria-disabled='true']),
+.ds-text-link:active:not([aria-disabled='true']),
+.ds-text-link[data-state='hover'],
+.ds-text-link[data-state='pressed'] {
+  color: var(--brand-pressed);
+}
+
+/* inset ring, so focus never changes the size */
+.ds-text-link:focus-visible,
+.ds-text-link[data-state='focus'] {
+  box-shadow: inset 0 0 0 var(--border-width-focus) var(--brand-primary);
+}
+
+.ds-text-link[aria-disabled='true'] {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}

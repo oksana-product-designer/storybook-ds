@@ -1,0 +1,158 @@
+/* Calendar — Figma components "Calendar" and "Calendar day". Tokens only. */
+
+.ds-calendar {
+  box-sizing: border-box;
+  /* 308px, the width in Figma */
+  width: calc(var(--space-32) * 9.625);
+  padding: var(--space-16);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-lg);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+.ds-calendar__months {
+  position: relative;
+}
+
+.ds-calendar__month {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* ---------- header: previous, month name, next ---------- */
+.ds-calendar__caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--space-32);
+}
+
+.ds-calendar__label {
+  font-size: var(--body-strong-font-size);
+  line-height: var(--body-strong-line-height);
+  font-weight: var(--body-strong-font-weight);
+  letter-spacing: var(--body-strong-letter-spacing);
+}
+
+.ds-calendar__nav {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--space-32);
+  pointer-events: none;
+}
+
+.ds-calendar__nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-32);
+  height: var(--space-32);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--icon-primary);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.ds-calendar__nav-button:hover:not(:disabled) {
+  background: var(--surface-page);
+}
+
+.ds-calendar__nav-button:focus-visible,
+.ds-calendar__day-button:focus-visible {
+  outline: var(--border-width-focus) solid var(--brand-primary);
+  outline-offset: calc(-1 * var(--border-width-focus));
+}
+
+.ds-calendar__nav-button:disabled {
+  color: var(--icon-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- weekdays and days ---------- */
+.ds-calendar__grid {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.ds-calendar__weekday {
+  padding: 0 0 var(--space-8);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--label-small-font-size);
+  line-height: var(--label-small-line-height);
+  font-weight: var(--label-small-font-weight);
+  letter-spacing: var(--label-small-letter-spacing);
+}
+
+.ds-calendar__day {
+  padding: 0;
+  text-align: center;
+}
+
+.ds-calendar__day-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--space-32);
+  /* the Figma day is 40px high: 32 + 8 */
+  min-height: calc(var(--space-32) + var(--space-8));
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--body-regular-font-size);
+  line-height: var(--body-regular-line-height);
+  font-weight: var(--body-regular-font-weight);
+  letter-spacing: var(--body-regular-letter-spacing);
+  cursor: pointer;
+}
+
+.ds-calendar__day-button:hover:not(:disabled) {
+  background: var(--surface-page);
+}
+
+.ds-calendar__day--today .ds-calendar__day-button {
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--brand-primary);
+  font-weight: var(--body-strong-font-weight);
+}
+
+.ds-calendar__day--outside .ds-calendar__day-button {
+  color: var(--text-secondary);
+}
+
+.ds-calendar__day--disabled .ds-calendar__day-button {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+.ds-calendar__day--disabled .ds-calendar__day-button:hover {
+  background: transparent;
+}
+
+.ds-calendar__day--selected .ds-calendar__day-button,
+.ds-calendar__day--selected .ds-calendar__day-button:hover {
+  background: var(--brand-primary);
+  color: var(--text-on-dark);
+  box-shadow: none;
+  font-weight: var(--body-strong-font-weight);
+}
+
+.ds-calendar__day--hidden {
+  visibility: hidden;
+}

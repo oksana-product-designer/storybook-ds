@@ -55,16 +55,28 @@ and *Code Connect: Write*. `npx figma connect publish --dry-run` lists what woul
 
 **Foundations** (read from the tokens, never copied): Colors, Typography, Spacing.
 
-**Components**: Button, ButtonGroup (with ButtonGroupItem), Input, Checkbox, Tag.
-Every component has stories for all Figma variants and states, with autodocs.
+**Components**: Button, ButtonGroup (with ButtonGroupItem), Input (text, select, date, multi-select), Checkbox, Tag, Chip,
+TextLink, Divider, ChevronToggle, Popover (with InfoPopover), SelectMenu (with SelectOption), Calendar and Logo.
+Every component has stories for all Figma variants and states, with autodocs. The icons have their own page (Foundations / Icons).
 
 | Component | Figma component | Main props |
 |---|---|---|
 | Button | Button | `variant`, `size`, `state`, `label`, icons |
 | ButtonGroup | Button group, Button group item | `value`, `onChange`, `multiple`, item `content`, `selected`, `state` |
-| Input | Input field | `variant`, `state`, `label`, helper, error and success text |
-| Checkbox | Checkbox | `checked`, `state`, `description`, `label` |
+| Input | Input field | `variant`, `state`, `label`, `options`, `value`, `onValueChange`, helper, error and success text, `infoText` |
+| Checkbox | Checkbox | `checked`, `state`, `description`, `label`, `titleInfoText` |
 | Tag | Badge | `variant`, `label`, `showIcon` |
+| Chip | Chip | `variant`, `state`, `label`, `onRemove` |
+| TextLink | Text link | `label`, `state`, `href` |
+| Divider | Divider | none |
+| ChevronToggle | Chevron toggle | `state` |
+| Popover | Popover | `text`; `InfoPopover` is the info icon that opens it |
+| SelectMenu | Select menu, Select option | `multiple`; option `label`, `state`, `badge`, `secondBadge` |
+| Calendar | Calendar, Calendar day | `selected`, `onSelect`, `disabled`, `defaultMonth` |
+| Logo | Logo / PayPal, PayPal Credit, G Pay, TVP, Affiliate | `name` |
+
+The Input opens the Select menu, the Calendar and the Chips itself. The Calendar is built on `react-day-picker`.
+The logos are exported from Figma into `src/assets/logos`.
 
 Figma `Type` is the `variant` prop. Hover, pressed, focus and disabled work natively;
 the `state` prop only forces a look so Storybook can show every state.
@@ -78,6 +90,7 @@ src/
   foundations/           MDX pages: Colors, Typography, Spacing
   components/<Name>/     Component, CSS, stories, index.ts
   icons/Icon.tsx         Icons by Figma name
+  assets/logos/          Logos exported from Figma
   docs/                  Helpers for documentation pages and story grids
 ```
 

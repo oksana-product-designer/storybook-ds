@@ -178,6 +178,7 @@
 .ds-checkbox[data-state='disabled'] .ds-checkbox__required {
   color: var(--text-danger);
 }
-.ds-checkbox[data-state='disabled'] .ds-checkbox__info {
+.ds-checkbox[data-state='disabled'] .ds-checkbox__info,
+.ds-checkbox[data-state='disabled'] .ds-info-popover__trigger {
   color: var(--icon-disabled);
 }

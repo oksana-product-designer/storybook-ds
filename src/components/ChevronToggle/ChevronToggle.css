@@ -1,0 +1,9 @@
+/* Chevron toggle — Figma component "Chevron toggle" (State). Tokens only. */
+
+.ds-chevron-toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  color: var(--icon-primary);
+}

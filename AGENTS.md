@@ -80,7 +80,10 @@ src/
     tokens.ts             # parses tokens.css, so pages never duplicate values
     StoryMatrix.tsx       # variant x state grid for stories
   icons/
-    Icon.tsx              # icons by Figma name (lucide/...), stroke is currentColor
+    Icon.tsx              # icons by Figma name (lucide/..., icon/...), colour is currentColor
+    figma/                # Code Connect templates, one per icon
+  assets/
+    logos/                # logos exported from Figma (PayPal, PayPal Credit, G Pay, TVP)
   components/
     <Name>/
       <Name>.tsx          # component and exported prop types
@@ -115,4 +118,12 @@ src/
 
 ## Not in the library yet
 
-Select menu, Select option, Calendar, Chip, Popover and the rest of the Figma file are not built. The Input `select`, `date` and `multi-select` variants are native or visual fields without the dropdown, the calendar or the info popover.
+Step marker, Step, Step navigation, Trust badge, Assurance item, Section header, Form row, Form section, Card,
+Corporate account, Accordion header, Summary row, Summary group, Order summary, Summary sidebar, Promo form, Discount code, Pricing card,
+Affiliate banner, Confirmation dialog, Order placed card, Top bar and Header, and the checkout pages. Figma "Calendar day" has no separate
+component: the Calendar draws its day states.
+
+Notes on the parts that are not plain Figma copies:
+- Select, Multi-select and Date in `Input` are built by us: the Figma file only draws the closed field and the open menu or calendar.
+- The Calendar uses `react-day-picker` (week starts on Monday, English labels, as in Figma).
+- Logos are real files in `src/assets/logos`. Figma "Logo / Affiliate" is a grey placeholder block, so `Logo name="affiliate"` is the same block.

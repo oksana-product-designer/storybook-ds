@@ -1,0 +1,41 @@
+/* Logo — Figma components "Logo / ...". Tokens only. */
+
+.ds-logo {
+  display: block;
+  flex-shrink: 0;
+  max-width: none;
+}
+
+/* 96 x 24 in Figma */
+.ds-logo[data-name='paypal'],
+.ds-logo[data-name='paypal-credit'],
+.ds-logo[data-name='gpay'] {
+  width: calc(var(--space-24) * 4);
+  height: var(--space-24);
+}
+
+/* 119 x 36 in Figma: the height is fixed and the width follows the image */
+.ds-logo[data-name='tvp'] {
+  width: auto;
+  height: calc(var(--space-24) * 1.5);
+}
+
+/* 160 x 40 placeholder block */
+.ds-logo[data-name='affiliate'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: calc(var(--space-8) * 20);
+  height: calc(var(--space-8) * 5);
+  border: var(--border-width-default) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--label-small-font-size);
+  line-height: var(--label-small-line-height);
+  font-weight: var(--label-small-font-weight);
+  letter-spacing: var(--label-small-letter-spacing);
+  white-space: nowrap;
+}

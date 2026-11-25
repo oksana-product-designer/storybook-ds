@@ -33,7 +33,7 @@
 
   /* ---------- Color: icon ---------- */
   --icon-primary: #222222;
-  --icon-secondary: #222222;
+  --icon-secondary: rgb(34 34 34 / 0.75); /* Figma: #222222, stroke-opacity 0.75 on Chip, tag, credit-card icons (checked in exported SVGs) */
   --icon-disabled: rgb(34 34 34 / 0.4); /* Figma: #222222, stroke-opacity 0.4 on disabled icons (checked in exported SVGs) */
   --icon-on-dark: #ffffff;
 
@@ -80,6 +80,7 @@
 
   --icon-size-sm: 14px; /* Chip remove icon */
   --icon-size-md: 16px;
+  --icon-size-lg: 20px; /* verified-shield, money-back */
 
   /* ---------- Typography: family ---------- */
   --font-family: 'Source Sans Pro', system-ui, sans-serif;

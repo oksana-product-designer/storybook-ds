@@ -1,6 +1,7 @@
 import type { ComponentPropsWithRef } from 'react';
 import { useId } from 'react';
 import { Icon } from '../../icons/Icon';
+import { InfoPopover } from '../Popover';
 import './Checkbox.css';
 
 /** Figma property `State`. Real hover/focus work through CSS; this prop forces a state. */
@@ -20,6 +21,8 @@ export type CheckboxProps = Omit<ComponentPropsWithRef<'input'>, 'type' | 'title
   title?: string;
   titleRequired?: boolean;
   titleInfoIcon?: boolean;
+  /** Text of the info popover on the title. Without it the info icon is shown without a popover. */
+  titleInfoText?: string;
 };
 
 export function Checkbox({
@@ -34,6 +37,7 @@ export function Checkbox({
   title = 'Title',
   titleRequired = false,
   titleInfoIcon = false,
+  titleInfoText,
   className,
   id,
   disabled,
@@ -63,7 +67,12 @@ export function Checkbox({
             <span>{title}</span>
             {titleRequired && <span className="ds-checkbox__required" aria-hidden="true">*</span>}
           </span>
-          {titleInfoIcon && <Icon name="info" className="ds-checkbox__info" />}
+          {titleInfoIcon &&
+            (titleInfoText ? (
+              <InfoPopover text={titleInfoText} />
+            ) : (
+              <Icon name="info" className="ds-checkbox__info" />
+            ))}
         </div>
       )}
 

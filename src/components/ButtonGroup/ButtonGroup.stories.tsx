@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn } from 'storybook/test';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonGroupItem } from './ButtonGroupItem';
+import { Logo } from '../Logo';
 
 const meta = {
   title: 'Components/ButtonGroup',
@@ -18,7 +19,7 @@ const meta = {
           '(one choice, arrow keys move and select, one tab stop). With `multiple` every item is an independent **toggle button** (`aria-pressed`). ' +
           'Selection lives on the group (`value`, `defaultValue`, `onChange`); each item has a `value`. ' +
           'The group needs an accessible name: pass `aria-label` or `aria-labelledby`.\n\n' +
-          'Item `content="logo"` shows the `logo` slot. The library has no logo components, so a placeholder is drawn until you pass one.',
+          'Item `content="logo"` shows the `logo` slot: pass a `Logo` (see Components/Logo). A placeholder is drawn when no logo is passed.',
       },
     },
   },
@@ -117,14 +118,14 @@ export const Multiple: Story = {
   },
 };
 
-/** Item content `logo`. The logo slot shows a placeholder until you pass a logo. */
+/** Item content `logo`, with the logos exported from Figma. */
 export const WithLogos: Story = {
-  args: { defaultValue: 'card' },
+  args: { defaultValue: 'paypal', 'aria-label': 'Payment method' },
   render: (args) => (
     <ButtonGroup {...args}>
-      <ButtonGroupItem value="card" content="logo" aria-label="Card" />
-      <ButtonGroupItem value="paypal" content="logo" aria-label="PayPal" />
-      <ButtonGroupItem value="gpay" content="logo" aria-label="Google Pay" />
+      <ButtonGroupItem value="paypal" content="logo" logo={<Logo name="paypal" />} aria-label="PayPal" />
+      <ButtonGroupItem value="paypal-credit" content="logo" logo={<Logo name="paypal-credit" />} aria-label="PayPal Credit" />
+      <ButtonGroupItem value="gpay" content="logo" logo={<Logo name="gpay" />} aria-label="Google Pay" />
     </ButtonGroup>
   ),
 };

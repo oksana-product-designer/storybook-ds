@@ -1,0 +1,47 @@
+/* Popover — Figma component "Popover". Tokens only. */
+
+.ds-popover {
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 36ch; /* from the Figma description */
+  padding: var(--space-12);
+  border-radius: var(--radius-sm);
+  background: var(--surface-popover);
+  color: var(--text-on-dark);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-family);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-font-weight);
+  letter-spacing: var(--caption-letter-spacing);
+}
+
+/* ---------- info icon + popover ---------- */
+.ds-info-popover {
+  position: relative;
+  display: inline-flex;
+}
+
+.ds-info-popover__trigger {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--icon-secondary);
+  cursor: help;
+}
+
+.ds-info-popover__trigger:focus-visible {
+  outline: var(--border-width-focus) solid var(--brand-primary);
+  outline-offset: var(--border-width-focus);
+}
+
+/* opens above the icon, 8px away, right-aligned to the icon */
+.ds-info-popover__box {
+  position: absolute;
+  inset-block-end: calc(100% + var(--space-8));
+  inset-inline-end: 0;
+  z-index: 2;
+}

@@ -71,22 +71,69 @@
   opacity: 1;
 }
 
-select.ds-input__control {
-  appearance: none;
+/* Select, Multi-select: the combobox button holds the text and the chevron */
+.ds-input__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  text-align: start;
   cursor: pointer;
-}
-/* empty option selected = placeholder look */
-select.ds-input__control:has(option:checked[value='']) {
-  color: var(--text-secondary);
 }
 
-.ds-input__control--multi {
-  display: flex;
+.ds-input__trigger:disabled {
+  cursor: not-allowed;
+}
+
+/* the field wraps the chips of a Multi-select */
+.ds-input__field:has(.ds-chip) {
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-8);
-  min-height: var(--body-regular-line-height);
+  row-gap: var(--space-4);
+  /* the Figma multi-select field is 40px high with chips */
+  padding-block: var(--space-8);
+}
+
+.ds-input__field:has(.ds-chip) .ds-input__trigger {
+  flex: 1 1 var(--space-32);
+}
+
+.ds-input__icon-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--icon-primary);
   cursor: pointer;
+}
+
+.ds-input__icon-button:focus-visible {
+  outline: var(--border-width-focus) solid var(--brand-primary);
+  outline-offset: var(--border-width-focus);
+}
+
+.ds-input__icon-button:disabled {
+  color: var(--icon-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- dropdown and calendar popup, 4px below the field ---------- */
+.ds-input__anchor {
+  position: relative;
+}
+
+.ds-input__popup {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: calc(100% + var(--space-4));
+  z-index: 1;
+  width: 100%;
+}
+
+.ds-input__popup--calendar {
+  width: auto;
 }
 
 .ds-input__icon {
@@ -112,8 +159,7 @@ select.ds-input__control:has(option:checked[value='']) {
 
 /* hover + filled */
 .ds-input__field:hover,
-.ds-input__field:has(.ds-input__control:not(:placeholder-shown):not(select):not(.ds-input__control--multi)),
-.ds-input__field:has(select option:checked:not([value=''])),
+.ds-input__field:has(input.ds-input__control:not(:placeholder-shown)),
 .ds-input__field:has([data-filled]),
 .ds-input[data-state='hover'] .ds-input__field,
 .ds-input[data-state='filled'] .ds-input__field {
@@ -161,6 +207,7 @@ select.ds-input__control:has(option:checked[value='']) {
   color: var(--text-danger);
 }
 .ds-input[data-state='disabled'] .ds-input__icon,
-.ds-input[data-state='disabled'] .ds-input__info {
+.ds-input[data-state='disabled'] .ds-input__info,
+.ds-input[data-state='disabled'] .ds-info-popover__trigger {
   color: var(--icon-disabled);
 }

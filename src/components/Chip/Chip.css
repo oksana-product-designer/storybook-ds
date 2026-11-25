@@ -1,0 +1,59 @@
+/* Chip — Figma component "Chip" (Type, State). Tokens only. */
+
+.ds-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  padding: var(--space-2) var(--space-8);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-font-weight);
+  letter-spacing: var(--caption-letter-spacing);
+  white-space: nowrap;
+  /* inset border: the size stays the same in every state, as in Figma */
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-divider);
+}
+
+.ds-chip[data-variant='removable'] {
+  padding-inline-end: var(--space-4);
+}
+
+.ds-chip:hover:not([data-state='disabled']),
+.ds-chip[data-state='hover'] {
+  background: var(--border-divider);
+}
+
+.ds-chip__remove {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--icon-secondary);
+  cursor: pointer;
+}
+
+.ds-chip__remove:focus-visible {
+  outline: var(--border-width-focus) solid var(--brand-primary);
+  outline-offset: calc(-1 * var(--border-width-focus));
+}
+
+.ds-chip[data-state='disabled'] {
+  color: var(--text-disabled);
+}
+.ds-chip[data-state='disabled'] .ds-chip__remove {
+  color: var(--icon-disabled);
+  cursor: not-allowed;
+}

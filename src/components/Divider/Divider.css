@@ -1,0 +1,10 @@
+/* Divider — Figma component "Divider". Tokens only. */
+
+.ds-divider {
+  display: block;
+  width: 100%;
+  height: var(--border-width-default);
+  margin: 0;
+  border: 0;
+  background: var(--border-divider);
+}
