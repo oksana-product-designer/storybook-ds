@@ -1,0 +1,129 @@
+/* Button — Figma component "Button" (Type, State, Size). Tokens only. */
+
+.ds-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--space-12) var(--space-16);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  white-space: nowrap;
+  cursor: pointer;
+  /* borders are drawn inset so they never change the size, as in Figma */
+  box-shadow: none;
+  outline: none;
+}
+
+.ds-button[data-size='small'] {
+  padding-block: var(--space-8);
+}
+
+.ds-button__label {
+  display: inline-block;
+}
+
+/* ---------- primary ---------- */
+.ds-button[data-variant='primary'] {
+  background: var(--accent-primary);
+  color: var(--text-on-dark);
+}
+.ds-button[data-variant='primary']:hover:not(:disabled),
+.ds-button[data-variant='primary'][data-state='hover'] {
+  background: var(--accent-hover);
+}
+.ds-button[data-variant='primary']:active:not(:disabled),
+.ds-button[data-variant='primary'][data-state='pressed'] {
+  background: var(--accent-pressed);
+}
+
+/* ---------- secondary ---------- */
+.ds-button[data-variant='secondary'] {
+  background: var(--surface-card);
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-default);
+}
+.ds-button[data-variant='secondary']:hover:not(:disabled),
+.ds-button[data-variant='secondary'][data-state='hover'] {
+  background: var(--surface-page);
+  box-shadow: inset 0 0 0 var(--border-width-default) color-mix(in srgb, var(--border-strong) 75%, transparent);
+}
+.ds-button[data-variant='secondary']:active:not(:disabled),
+.ds-button[data-variant='secondary'][data-state='pressed'] {
+  background: var(--border-divider);
+  box-shadow: inset 0 0 0 var(--border-width-default) color-mix(in srgb, var(--border-strong) 75%, transparent);
+}
+
+/* ---------- links ---------- */
+.ds-button[data-variant^='link'] {
+  padding: var(--space-4) 0;
+  font-size: var(--button-underline-font-size);
+  line-height: var(--button-underline-line-height);
+  font-weight: var(--button-underline-font-weight);
+  letter-spacing: var(--button-underline-letter-spacing);
+  text-underline-position: from-font;
+}
+.ds-button[data-variant='link'] {
+  color: var(--text-link);
+}
+.ds-button[data-variant='link-accent'] {
+  color: var(--accent-primary);
+}
+.ds-button[data-variant='link-danger'] {
+  color: var(--text-danger);
+}
+.ds-button[data-variant^='link']:hover:not(:disabled),
+.ds-button[data-variant^='link'][data-state='hover'],
+.ds-button[data-variant^='link']:active:not(:disabled),
+.ds-button[data-variant^='link'][data-state='pressed'] {
+  text-decoration: underline;
+}
+.ds-button[data-variant='link']:active:not(:disabled),
+.ds-button[data-variant='link'][data-state='pressed'] {
+  color: var(--brand-pressed);
+}
+.ds-button[data-variant='link-accent']:hover:not(:disabled),
+.ds-button[data-variant='link-accent'][data-state='hover'] {
+  color: var(--accent-hover);
+}
+.ds-button[data-variant='link-accent']:active:not(:disabled),
+.ds-button[data-variant='link-accent'][data-state='pressed'] {
+  color: var(--accent-pressed);
+}
+
+/* ---------- focus (all variants) ---------- */
+.ds-button:focus-visible,
+.ds-button[data-state='focus'] {
+  box-shadow: inset 0 0 0 var(--border-width-focus) var(--brand-primary);
+}
+
+/* ---------- disabled (all variants) ---------- */
+.ds-button:disabled,
+.ds-button[data-state='disabled'] {
+  cursor: not-allowed;
+  text-decoration: none;
+  color: var(--text-disabled);
+}
+.ds-button[data-variant='primary']:disabled,
+.ds-button[data-variant='primary'][data-state='disabled'] {
+  background: var(--border-divider);
+}
+.ds-button[data-variant='secondary']:disabled,
+.ds-button[data-variant='secondary'][data-state='disabled'] {
+  background: var(--surface-card);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-divider);
+}
+.ds-button[data-variant^='link']:disabled,
+.ds-button[data-variant^='link'][data-state='disabled'] {
+  background: transparent;
+  box-shadow: none;
+}

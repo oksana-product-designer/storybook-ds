@@ -1,0 +1,183 @@
+/* Checkbox — Figma component "Checkbox" (Checked, State, Description). Tokens only. */
+
+.ds-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--font-family);
+}
+
+/* ---------- title row ---------- */
+.ds-checkbox__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  padding-block-end: var(--space-16);
+}
+
+.ds-checkbox__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--label-caps-font-size);
+  line-height: var(--label-caps-line-height);
+  font-weight: var(--label-caps-font-weight);
+  letter-spacing: var(--label-caps-letter-spacing);
+  text-transform: var(--label-caps-text-transform);
+  color: var(--text-secondary);
+}
+
+.ds-checkbox__required {
+  color: var(--text-danger);
+}
+
+.ds-checkbox__info {
+  color: var(--icon-secondary);
+}
+
+/* ---------- row ---------- */
+.ds-checkbox__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  align-self: stretch;
+  cursor: pointer;
+}
+
+/* native input stays in the DOM for keyboard and screen readers, drawn over the area */
+.ds-checkbox__input {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: var(--space-24);
+  height: var(--space-24);
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.ds-checkbox__area {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--space-24);
+  height: var(--space-24);
+  border-radius: var(--radius-md);
+}
+
+.ds-checkbox__box {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  overflow: hidden;
+  border: var(--border-width-default) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  color: var(--icon-on-dark);
+}
+
+.ds-checkbox__check {
+  visibility: hidden;
+  /* the 16px check sits over the 1px border, as in Figma */
+  margin: calc(-1 * var(--border-width-default));
+}
+
+.ds-checkbox__label {
+  flex: 1 1 auto;
+  font-size: var(--label-small-font-size);
+  line-height: var(--label-small-line-height);
+  font-weight: var(--label-small-font-weight);
+  letter-spacing: var(--label-small-letter-spacing);
+  color: var(--text-secondary);
+}
+
+.ds-checkbox__description {
+  align-self: stretch;
+  margin: 0;
+  padding-block-start: var(--space-16);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-font-weight);
+  letter-spacing: var(--caption-letter-spacing);
+  color: var(--text-secondary);
+}
+
+.ds-checkbox__error {
+  margin: 0;
+  padding-inline-start: var(--space-32);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-font-weight);
+  letter-spacing: var(--caption-letter-spacing);
+  color: var(--text-danger);
+}
+
+/* ---------- checked ---------- */
+.ds-checkbox__input:checked ~ .ds-checkbox__area .ds-checkbox__box {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+.ds-checkbox__input:checked ~ .ds-checkbox__area .ds-checkbox__check {
+  visibility: visible;
+}
+
+/* ---------- hover ---------- */
+.ds-checkbox__row:hover .ds-checkbox__box,
+.ds-checkbox[data-state='hover'] .ds-checkbox__box {
+  border-color: color-mix(in srgb, var(--border-strong) 75%, transparent);
+}
+.ds-checkbox__row:hover .ds-checkbox__input:checked ~ .ds-checkbox__area .ds-checkbox__box,
+.ds-checkbox[data-state='hover'] .ds-checkbox__input:checked ~ .ds-checkbox__area .ds-checkbox__box {
+  background: var(--brand-pressed);
+  border-color: var(--brand-pressed);
+}
+
+/* ---------- error ---------- */
+.ds-checkbox[data-state='error'] .ds-checkbox__box,
+.ds-checkbox[data-state='error'] .ds-checkbox__input:checked ~ .ds-checkbox__area .ds-checkbox__box {
+  border-color: var(--border-danger);
+}
+
+/* ---------- focus ---------- */
+.ds-checkbox__input:focus-visible ~ .ds-checkbox__area,
+.ds-checkbox[data-state='focus'] .ds-checkbox__area {
+  box-shadow: inset 0 0 0 var(--border-width-focus) var(--brand-primary);
+}
+
+/* ---------- disabled ---------- */
+.ds-checkbox[data-state='disabled'] .ds-checkbox__row,
+.ds-checkbox__input:disabled ~ .ds-checkbox__label {
+  cursor: not-allowed;
+}
+.ds-checkbox[data-state='disabled'] .ds-checkbox__box,
+.ds-checkbox__input:disabled ~ .ds-checkbox__area .ds-checkbox__box {
+  background: var(--surface-page);
+  border-color: var(--border-divider);
+  color: var(--icon-disabled);
+}
+.ds-checkbox[data-state='disabled'] .ds-checkbox__input:checked ~ .ds-checkbox__area .ds-checkbox__box,
+.ds-checkbox__input:disabled:checked ~ .ds-checkbox__area .ds-checkbox__box {
+  background: var(--border-divider);
+  border-color: var(--border-divider);
+}
+.ds-checkbox[data-state='disabled'] .ds-checkbox__label,
+.ds-checkbox[data-state='disabled'] .ds-checkbox__description,
+.ds-checkbox[data-state='disabled'] .ds-checkbox__title,
+.ds-checkbox__input:disabled ~ .ds-checkbox__label {
+  color: var(--text-disabled);
+}
+.ds-checkbox[data-state='disabled'] .ds-checkbox__required {
+  color: var(--text-danger);
+}
+.ds-checkbox[data-state='disabled'] .ds-checkbox__info {
+  color: var(--icon-disabled);
+}

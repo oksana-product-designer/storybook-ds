@@ -1,0 +1,166 @@
+/* Input — Figma component "Input field" (Type, State). Tokens only. */
+
+.ds-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: stretch;
+  font-family: var(--font-family);
+}
+
+/* ---------- label ---------- */
+.ds-input__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ds-input__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--label-caps-font-size);
+  line-height: var(--label-caps-line-height);
+  font-weight: var(--label-caps-font-weight);
+  letter-spacing: var(--label-caps-letter-spacing);
+  text-transform: var(--label-caps-text-transform);
+  color: var(--text-secondary);
+}
+
+.ds-input__required {
+  color: var(--text-danger);
+}
+
+.ds-input__info {
+  color: var(--icon-secondary);
+}
+
+/* ---------- field ---------- */
+.ds-input__field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  box-sizing: border-box;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  color: var(--text-primary);
+  /* inset border: keeps the field size identical in every state, as in Figma */
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-divider);
+}
+
+.ds-input__control {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--body-regular-font-size);
+  line-height: var(--body-regular-line-height);
+  font-weight: var(--body-regular-font-weight);
+  letter-spacing: var(--body-regular-letter-spacing);
+}
+
+.ds-input__control::placeholder,
+.ds-input__placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+select.ds-input__control {
+  appearance: none;
+  cursor: pointer;
+}
+/* empty option selected = placeholder look */
+select.ds-input__control:has(option:checked[value='']) {
+  color: var(--text-secondary);
+}
+
+.ds-input__control--multi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+  min-height: var(--body-regular-line-height);
+  cursor: pointer;
+}
+
+.ds-input__icon {
+  color: var(--icon-primary);
+  pointer-events: none;
+}
+
+.ds-input__success-icon {
+  color: var(--text-success);
+}
+
+/* ---------- message ---------- */
+.ds-input__message {
+  margin: 0;
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-font-weight);
+  letter-spacing: var(--caption-letter-spacing);
+  color: var(--text-secondary);
+}
+
+/* ---------- states (later rules win) ---------- */
+
+/* hover + filled */
+.ds-input__field:hover,
+.ds-input__field:has(.ds-input__control:not(:placeholder-shown):not(select):not(.ds-input__control--multi)),
+.ds-input__field:has(select option:checked:not([value=''])),
+.ds-input__field:has([data-filled]),
+.ds-input[data-state='hover'] .ds-input__field,
+.ds-input[data-state='filled'] .ds-input__field {
+  box-shadow: inset 0 0 0 var(--border-width-default) color-mix(in srgb, var(--border-strong) 75%, transparent);
+}
+
+/* error */
+.ds-input[data-state='error'] .ds-input__field {
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-danger);
+}
+.ds-input[data-state='error'] .ds-input__message {
+  color: var(--text-danger);
+}
+
+/* success */
+.ds-input[data-state='success'] .ds-input__field {
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-success);
+}
+.ds-input[data-state='success'] .ds-input__message {
+  color: var(--text-success);
+}
+
+/* focus */
+.ds-input__field:focus-within,
+.ds-input[data-state='focus'] .ds-input__field {
+  box-shadow: inset 0 0 0 var(--border-width-focus) var(--brand-primary);
+}
+
+/* disabled */
+.ds-input[data-state='disabled'] .ds-input__field,
+.ds-input:has(:disabled) .ds-input__field {
+  background: var(--surface-page);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-divider);
+  cursor: not-allowed;
+}
+.ds-input[data-state='disabled'] .ds-input__label,
+.ds-input:has(:disabled) .ds-input__label,
+.ds-input[data-state='disabled'] .ds-input__control,
+.ds-input:has(:disabled) .ds-input__control,
+.ds-input[data-state='disabled'] .ds-input__control::placeholder {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+.ds-input[data-state='disabled'] .ds-input__required {
+  color: var(--text-danger);
+}
+.ds-input[data-state='disabled'] .ds-input__icon,
+.ds-input[data-state='disabled'] .ds-input__info {
+  color: var(--icon-disabled);
+}

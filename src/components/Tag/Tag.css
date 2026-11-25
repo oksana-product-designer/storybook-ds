@@ -1,0 +1,30 @@
+/* Tag — Figma component "Badge" (Type). Tokens only. */
+
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  padding: var(--space-4) var(--space-12) var(--space-4) var(--space-8);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family);
+  font-size: var(--label-small-font-size);
+  line-height: var(--label-small-line-height);
+  font-weight: var(--label-small-font-weight);
+  letter-spacing: var(--label-small-letter-spacing);
+  white-space: nowrap;
+}
+
+.ds-tag[data-variant='error'] {
+  background: var(--surface-danger-subtle);
+  color: var(--text-danger);
+}
+.ds-tag[data-variant='success'] {
+  background: var(--surface-success-subtle);
+  color: var(--text-success);
+}
+.ds-tag[data-variant='brand'] {
+  background: var(--surface-brand-subtle);
+  color: var(--brand-primary);
+}

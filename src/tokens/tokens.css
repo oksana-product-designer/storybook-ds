@@ -1,0 +1,146 @@
+/*
+ * Design tokens — generated from Figma variables
+ * File: TVP | Checkout flow (4cN2sjeRxYOB0Tfjh6gRKr), page "Components"
+ *
+ * Naming: Figma variable "group/name" -> CSS custom property "--group-name".
+ * Text styles are split into --<style>-font-size / -line-height / -font-weight / -letter-spacing.
+ *
+ * Opacity: Figma returns some variables as an opaque hex while the component applies
+ * opacity to the fill (e.g. text/disabled is #222222 in the variable list but renders
+ * at 40%). Where verified on a component, the effective value is used and the raw
+ * Figma value is kept in the comment.
+ */
+
+:root {
+  /* ---------- Color: brand ---------- */
+  --brand-primary: #0059ac;
+  --brand-pressed: #003f7d;
+
+  /* ---------- Color: accent ---------- */
+  --accent-primary: #f48120;
+  --accent-hover: #dc6910;
+  --accent-pressed: #c45a00;
+  --accent-subtle: rgb(244 129 32 / 0.1); /* Figma: #F48120, 10% on the selected Button group item in hover and pressed */
+
+  /* ---------- Color: text ---------- */
+  --text-primary: #222222;
+  --text-secondary: rgb(34 34 34 / 0.75); /* Figma: #222222, 75% on Input label, Checkbox label, helper text */
+  --text-disabled: rgb(34 34 34 / 0.4); /* Figma: #222222, 40% on Button disabled */
+  --text-danger: #cd3739;
+  --text-success: #1e7b3a;
+  --text-link: #0059ac;
+  --text-on-dark: #ffffff;
+
+  /* ---------- Color: icon ---------- */
+  --icon-primary: #222222;
+  --icon-secondary: #222222;
+  --icon-disabled: rgb(34 34 34 / 0.4); /* Figma: #222222, stroke-opacity 0.4 on disabled icons (checked in exported SVGs) */
+  --icon-on-dark: #ffffff;
+
+  /* ---------- Color: border ---------- */
+  --border-default: #8a8a8a;
+  --border-strong: #222222;
+  --border-divider: #dbdbdb;
+  --border-danger: #cd3739;
+  --border-success: #1e7b3a;
+
+  /* ---------- Color: surface ---------- */
+  --surface-page: #f4f6f7;
+  --surface-card: #ffffff;
+  --surface-badge: #fdbd22;
+  --surface-danger-subtle: rgb(205 55 57 / 0.1); /* Figma: #CD3739, 10% on Badge Error */
+  --surface-success-subtle: rgb(30 123 58 / 0.1); /* Figma: #1E7B3A, 10% on Badge Success */
+  --surface-brand-subtle: rgb(0 89 172 / 0.1); /* Figma: #0059AC, 10% on Badge Brand */
+  --surface-popover: rgb(0 0 0 / 0.8); /* Figma: #000000, 80% on Popover */
+
+  /* ---------- Shadow ---------- */
+  --shadow-sm: 0 4px 8px 0 rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 16px 32px 0 rgb(0 0 0 / 0.08);
+
+  /*
+   * Spacing, radius, border width, icon size.
+   * NOT Figma variables: Figma has none for these. Values are taken from padding, gap,
+   * corner radius and stroke of Button, Input, Checkbox, Badge and Chip, and the names
+   * are our own (confirmed by the team). Figma variable names do not apply here.
+   */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  --radius-sm: 4px; /* Button, Input, Chip, Checkbox box, Popover */
+  --radius-md: 6px; /* Checkbox focus area */
+  --radius-full: 999px; /* Badge */
+
+  --border-width-default: 1px;
+  --border-width-focus: 2px; /* Button focus state */
+
+  --icon-size-sm: 14px; /* Chip remove icon */
+  --icon-size-md: 16px;
+
+  /* ---------- Typography: family ---------- */
+  --font-family: 'Source Sans Pro', system-ui, sans-serif;
+
+  /*
+   * Typography: text styles.
+   * Figma letterSpacing is a percentage: -2 -> -0.02em (= -0.32px at 16px), 1 -> 0.01em (= 0.14px at 14px).
+   */
+  --button-font-size: 16px;
+  --button-line-height: 16px;
+  --button-font-weight: 600;
+  --button-letter-spacing: -0.02em;
+
+  --button-underline-font-size: 16px;
+  --button-underline-line-height: 16px;
+  --button-underline-font-weight: 600;
+  --button-underline-letter-spacing: -0.02em;
+
+  --label-regular-font-size: 16px;
+  --label-regular-line-height: 16px;
+  --label-regular-font-weight: 400;
+  --label-regular-letter-spacing: -0.02em;
+
+  --label-small-font-size: 14px;
+  --label-small-line-height: 16px;
+  --label-small-font-weight: 600;
+  --label-small-letter-spacing: 0.01em;
+
+  --label-caps-font-size: 14px;
+  --label-caps-line-height: 16px;
+  --label-caps-font-weight: 600;
+  --label-caps-letter-spacing: 0.01em;
+  --label-caps-text-transform: uppercase; /* applied in the Input / Checkbox title in Figma */
+
+  --body-regular-font-size: 16px;
+  --body-regular-line-height: 24px;
+  --body-regular-font-weight: 400;
+  --body-regular-letter-spacing: -0.02em;
+
+  --body-strong-font-size: 16px;
+  --body-strong-line-height: 24px;
+  --body-strong-font-weight: 600;
+  --body-strong-letter-spacing: -0.02em;
+
+  --body-link-font-size: 16px;
+  --body-link-line-height: 24px;
+  --body-link-font-weight: 600;
+  --body-link-letter-spacing: -0.02em;
+
+  --caption-font-size: 14px;
+  --caption-line-height: 20px;
+  --caption-font-weight: 400;
+  --caption-letter-spacing: 0.01em;
+
+  --heading-font-size: 20px;
+  --heading-line-height: 24px;
+  --heading-font-weight: 600;
+  --heading-letter-spacing: -0.02em;
+
+  --amount-font-size: 32px;
+  --amount-line-height: 32px;
+  --amount-font-weight: 400;
+  --amount-letter-spacing: -0.02em;
+}

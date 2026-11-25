@@ -1,0 +1,106 @@
+/* Button group — Figma components "Button group" and "Button group item". Tokens only. */
+
+.ds-button-group {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-16);
+  font-family: var(--font-family);
+}
+
+/* ---------- item ---------- */
+.ds-button-group-item {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-12) var(--space-16);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--label-regular-font-size);
+  line-height: var(--label-regular-line-height);
+  font-weight: var(--label-regular-font-weight);
+  letter-spacing: var(--label-regular-letter-spacing);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  /* borders are drawn inset so a state change never resizes the item */
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-default);
+}
+
+.ds-button-group-item[data-content='logo'] {
+  padding-block: var(--space-8);
+}
+
+/* ---------- hover and pressed (not selected) ---------- */
+.ds-button-group-item[data-selected='false']:hover:not(:disabled),
+.ds-button-group-item[data-selected='false'][data-state='hover'] {
+  background: var(--surface-page);
+  box-shadow: inset 0 0 0 var(--border-width-default) color-mix(in srgb, var(--border-strong) 75%, transparent);
+}
+.ds-button-group-item[data-selected='false']:active:not(:disabled),
+.ds-button-group-item[data-selected='false'][data-state='pressed'] {
+  background: var(--border-divider);
+  box-shadow: inset 0 0 0 var(--border-width-default) color-mix(in srgb, var(--border-strong) 75%, transparent);
+}
+
+/* ---------- selected ---------- */
+.ds-button-group-item[data-selected='true'] {
+  color: var(--accent-primary);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--accent-primary);
+}
+.ds-button-group-item[data-selected='true']:hover:not(:disabled),
+.ds-button-group-item[data-selected='true'][data-state='hover'] {
+  background: var(--accent-subtle);
+  color: var(--accent-hover);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--accent-hover);
+}
+.ds-button-group-item[data-selected='true']:active:not(:disabled),
+.ds-button-group-item[data-selected='true'][data-state='pressed'] {
+  background: var(--accent-subtle);
+  color: var(--accent-pressed);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--accent-pressed);
+}
+
+/* ---------- focus ---------- */
+.ds-button-group-item:focus-visible,
+.ds-button-group-item[data-state='focus'] {
+  box-shadow: inset 0 0 0 var(--border-width-focus) var(--brand-primary);
+}
+
+/* ---------- disabled ---------- */
+.ds-button-group-item:disabled,
+.ds-button-group-item[data-state='disabled'] {
+  background: transparent;
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-divider);
+}
+
+/* ---------- logo placeholder (used until a real logo is passed) ---------- */
+.ds-button-group-item__logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: calc(var(--space-24) * 4);
+  height: var(--space-24);
+  border: var(--border-width-default) dashed var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text-secondary);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-font-weight);
+  letter-spacing: var(--caption-letter-spacing);
+}
