@@ -1,0 +1,34 @@
+# Publishes Storybook to Chromatic and runs visual tests on every push.
+# Needs the repository secret CHROMATIC_PROJECT_TOKEN
+# (GitHub: Settings > Secrets and variables > Actions > New repository secret).
+name: Chromatic
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Chromatic needs the full git history to find baselines
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # Do not fail the build when visual changes are found: they wait for review in Chromatic.
+          exitZeroOnChanges: true

@@ -23,6 +23,18 @@ npm run storybook        # http://localhost:6006
 
 The first Vitest run needs the Playwright browser: `npx playwright install chromium`.
 
+## Chromatic
+
+Storybook is published to [Chromatic](https://www.chromatic.com) by the GitHub Action in
+`.github/workflows/chromatic.yml` on every push to `main` and on pull requests.
+
+1. Sign in to Chromatic with GitHub and add this repository as a project.
+2. Copy the project token and save it as the repository secret `CHROMATIC_PROJECT_TOKEN`
+   (Settings, Secrets and variables, Actions).
+3. Push. The first build becomes the visual baseline.
+
+To publish by hand: `CHROMATIC_PROJECT_TOKEN=<token> npm run chromatic`.
+
 ## What is inside
 
 **Foundations** (read from the tokens, never copied): Colors, Typography, Spacing.
