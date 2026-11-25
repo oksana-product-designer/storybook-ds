@@ -1,32 +1,65 @@
-# React + TypeScript + Vite
+# storybook-ds
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A Storybook design system built from the "TVP | Checkout flow" Figma file.
 
-Currently, two official plugins are available:
+- Vite + React 19 + TypeScript
+- Storybook 10 (Docs, Controls, a11y, Viewport, Vitest)
+- Plain CSS on CSS variables, no Tailwind
+- Tokens generated from Figma variables, component props follow Figma component properties
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting started
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run storybook        # http://localhost:6006
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+| Command | What it does |
+|---|---|
+| `npm run storybook` | Starts Storybook on port 6006 |
+| `npm run build-storybook` | Builds a static Storybook into `storybook-static/` |
+| `npx vitest --project storybook run` | Runs every story and its play function in Chromium |
+| `npx tsc -p tsconfig.app.json --noEmit` | Type check |
+
+The first Vitest run needs the Playwright browser: `npx playwright install chromium`.
+
+## What is inside
+
+**Foundations** (read from the tokens, never copied): Colors, Typography, Spacing.
+
+**Components**: Button, ButtonGroup (with ButtonGroupItem), Input, Checkbox, Tag.
+Every component has stories for all Figma variants and states, with autodocs.
+
+| Component | Figma component | Main props |
+|---|---|---|
+| Button | Button | `variant`, `size`, `state`, `label`, icons |
+| ButtonGroup | Button group, Button group item | `value`, `onChange`, `multiple`, item `content`, `selected`, `state` |
+| Input | Input field | `variant`, `state`, `label`, helper, error and success text |
+| Checkbox | Checkbox | `checked`, `state`, `description`, `label` |
+| Tag | Badge | `variant`, `label`, `showIcon` |
+
+Figma `Type` is the `variant` prop. Hover, pressed, focus and disabled work natively;
+the `state` prop only forces a look so Storybook can show every state.
+
+## Project structure
+
+```
+.storybook/              Storybook config (tokens and fonts are loaded in preview.tsx)
+src/
+  tokens/tokens.css      The only place where raw values live
+  foundations/           MDX pages: Colors, Typography, Spacing
+  components/<Name>/     Component, CSS, stories, index.ts
+  icons/Icon.tsx         Icons by Figma name
+  docs/                  Helpers for documentation pages and story grids
+```
+
+## Design tokens
+
+`src/tokens/tokens.css` holds the tokens. A Figma variable `group/name` becomes `--group-name`
+(`text/primary` is `--text-primary`). Components use only `var(--…)`: no hex colours or raw px values.
+Spacing, radius, border width and icon size are not Figma variables; their values are taken from the components.
+
+## Contributing
+
+Read [AGENTS.md](AGENTS.md) first. It describes the rules for tokens, prop names, states,
+accessibility and the folder structure, and the steps for adding a token or a component.
