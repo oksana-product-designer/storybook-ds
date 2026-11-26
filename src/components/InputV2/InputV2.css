@@ -1,0 +1,47 @@
+/* Source Sans 3 matches the selected update; scoped to V2, not the existing input. */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Source Sans 3'), url('https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.3.1/files/source-sans-3-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Source Sans 3 SemiBold'), url('https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.3.1/files/source-sans-3-latin-600-normal.woff2') format('woff2');
+}
+
+:root {
+  /* Measured from YmluYFMIdELMbsDJqbPZBr / 7:63; not Figma variables. */
+  --input-v2-font-family: 'Source Sans 3', var(--font-family);
+  --input-v2-control-height: 42px;
+  --input-v2-preview-width: 330.6953125px;
+  --input-v2-icon-stroke-width: 2.25;
+}
+
+.ds-input-v2 {
+  --font-family: var(--input-v2-font-family);
+  width: 100%;
+  min-width: 0;
+}
+
+.ds-input-v2 .ds-input__field {
+  min-height: var(--input-v2-control-height);
+  padding: calc(var(--space-8) + var(--border-width-default)) calc(var(--space-12) + var(--border-width-default));
+}
+
+.ds-input-v2 .ds-input__icon-button {
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-secondary);
+}
+
+.ds-input-v2 .ds-input__icon-button svg {
+  stroke-width: var(--input-v2-icon-stroke-width);
+}
+
+.ds-input-v2 .ds-input__icon-button:disabled { color: var(--icon-disabled); }
